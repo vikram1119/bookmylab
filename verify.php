@@ -23,21 +23,29 @@ if (isset($_POST['email']) && isset($_POST['hash'])) {
         $response["verified"] =TRUE;// $isVerified["verified"];
        // $response["user"]["active"] = $user["active"];
          //update the active 
-         
-        // $response["user"]["updated_at"] = $user["updated_at"];
-        echo json_encode($response);
+            $isUpdated=$db->updateActiveValue($email);
+            if($isUpdated==1){
+               // echo " UPDATED ";
+               $response["success"] = true;
+            }else{
+               // echo " No Update";
+               $response["success"] = FALSE;
+            }
+         // $response["user"]["updated_at"] = $user["updated_at"];
+        //echo json_encode($response);
     } else {
         // user is not found with the credentials
         $response["success"] = FALSE;
         $response["error_msg"] = " Verification credentials are wrong. Please try again!";
-          $response["verified"] =FALSE;
-        echo json_encode($response);
+        $response["verified"] =FALSE;
+     //   echo json_encode($response);
     }
 } else {
     // required post params is missing
     $response["success"] = FALSE;
     $response["error_msg"] = "Required parameters email or hash code is missing!";
-    echo json_encode($response);
 }
+    echo json_encode($response);
+
 ?>
 

@@ -7,16 +7,25 @@ $db = new DB_Functions();
 // json response array
 $response = array("success" => TRUE);
 
-if (isset($_POST['date'])) {
+if (isset($_POST['date'])&&
+    isset($_POST['lab_number'])) {
 
     // receiving the post params
     $date = $_POST['date'];
-    
-    // get the user by email and password
-    $booked_slots = $db->getBookedSlots($date);
+    $lab_number = $_POST['lab_number'];
+    if($lab_number==1){
+            $booked_slots = $db->getSemBookedSlots($date);
 
-    if ($booked_slots != false) {
-        // use is found
+    }else if($lab_number==2){
+            $booked_slots = $db->getSpmBookedSlots($date);
+
+    }else if($lab_number==3){
+            $booked_slots = $db->getXrdBookedSlots($date);
+    }
+    // get the user by email and password
+
+    if ($booked_slots ) {
+        // booked  is found
         $response["success"] = TRUE;
          
         $response["s1"] = $booked_slots["s1"];
@@ -46,8 +55,19 @@ if (isset($_POST['date'])) {
  
         echo json_encode($response);
     } else {
-         $response["success"] = FALSE;
-        $response["error_msg"] = "can't get booked slots Please try again!";
+         $response["success"] = true;
+       // $response["error_msg"] = "can't get booked slots Please try again!";
+        if($lab_number==1){
+           $db->semSlotBooking($date,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+	
+		
+        }else if($lab_number==2){
+                       $db->spmSlotBooking($date,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+
+        }else if($lab_number==3){
+                       $db->xrdSlotBooking($date,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+
+        }
         echo json_encode($response);
     }
 } else {
