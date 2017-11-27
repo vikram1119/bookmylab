@@ -1,11 +1,14 @@
 <?php
+/*
+This file is for booking the spm slot after the payment 
+*/
 header("Access-Control-Allow-Origin: *");
 
 require_once 'include/DB_Functions.php';
 $db = new DB_Functions();
 
 // json response array
-// $response = array("success" => TRUE);
+ $response = array("success" => FALSE);
 
 if (isset($_POST['date']) ) {
 
@@ -38,11 +41,11 @@ if (isset($_POST['date']) ) {
  
      $booked_slots = $db->spmSlotBooking($date,$s1,$s2,$s3,$s4,$s5,$s6,$s7,$s8,$s9,$s10,$s11,$s12,$s13,$s14,$s15,$s16,$s17,$s18,$s19,$s20,$s21,$s22,$s23,$s24);
         if ($booked_slots) {
-            // user stored successfully
+            // booking stored successfully
             $response["success"] = TRUE;
              echo json_encode($response);
         } else {
-            // user failed to store
+            // booking failed to store
             $response["success"] = FALSE;
             $response["error_msg"] = "Unknown error occurred in registration!";
             echo json_encode($response);

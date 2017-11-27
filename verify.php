@@ -1,4 +1,7 @@
 <?php
+/*
+This file is for verifying the user by sending OTP 
+*/
 header("Access-Control-Allow-Origin: *");
 
 require_once 'include/DB_Functions.php';

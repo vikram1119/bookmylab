@@ -1,4 +1,6 @@
 <?php
+/*
+This file is for login*/
 header("Access-Control-Allow-Origin: *");
 
 require_once 'include/DB_Functions.php';

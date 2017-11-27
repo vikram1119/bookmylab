@@ -1,4 +1,7 @@
 <?php
+/*
+This file is for Controlling the register the user 
+*/
 header("Access-Control-Allow-Origin: *");
 
 require_once 'include/DB_Functions.php';
@@ -12,7 +15,7 @@ if (isset($_POST['email']) &&
     isset($_POST['first_name']) &&
     isset($_POST['last_name']) &&
     isset($_POST['gender']) 
-    ) {
+) {
 
     // receiving the post params
     $email = $_POST['email'];
@@ -25,23 +28,23 @@ if (isset($_POST['email']) &&
 
 
     // check if user is already existed with the same email
-    $user1=$db->isUserExisted($email);
-    if ($user1) {
+$user1=$db->isUserExisted($email);
+if ($user1) {
         // user already existed
-        
-        $response["success"] = FALSE;
-        $response["error_msg"] = "User already existed with " . $email;
-        $response["exist"]=TRUE;
-        $verified=$user1["active"];
-        if($verified==1){
-             $response["verified"]=TRUE;
-        }else{
-             $response["verified"]=FALSE;
+    
+    $response["success"] = FALSE;
+    $response["error_msg"] = "User already existed with " . $email;
+    $response["exist"]=TRUE;
+    $verified=$user1["active"];
+    if($verified==1){
+     $response["verified"]=TRUE;
+ }else{
+     $response["verified"]=FALSE;
 
-        }       
+ }       
         //echo json_encode($response);
-    } else {
-        
+} else {
+    
         $hash_1 = md5( rand(0,1000) );//Create a random hash for email verification
 
         // create a new user
@@ -83,8 +86,8 @@ if (isset($_POST['email']) &&
 } else {
     $response["success"] = FALSE;
     $response["error_msg"] = "Required parameters ( email, first_name, middle_name, last_name, gender, or password) is missing!";
- }
-            echo json_encode($response);
+}
+echo json_encode($response);
 
 ?>
 

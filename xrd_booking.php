@@ -1,11 +1,16 @@
 <?php
+/*
+This file is for booking the xrd lab
 
+*/
 header("Access-Control-Allow-Origin: *");
 
 require_once 'include/DB_Functions.php';
 
 $db = new DB_Functions();
-
+/*
+File for booking xrd lab 
+*/
 
 
 // json response array
@@ -38,16 +43,7 @@ if (isset($_POST['material']) &&
 
     ) {
 
-        
-
  
-
-
-
-    // receiving the post params
-
-//    $booking_id = $_POST['booking_id'];
-
     $material = $_POST['material'];
 
     $prep_method = $_POST['prep_method'];
@@ -94,32 +90,7 @@ if (isset($_POST['material']) &&
 
             $booking_id = $lab_booking["booking_id"];
 
-            // $response["book"]["material"] = $xrd_lab["material"];
-
-            // $response["xrd_lab"]["prep_method"] = $xrd_lab["prep_method"];
-
-            // $response["xrd_lab"]["material_type"] = $xrd_lab["material_type"];
-
-            // $response["xrd_lab"]["scan_angle"] = $xrd_lab["scan_angle"];
-
-            // $response["xrd_lab"]["toxic"] = $xrd_lab["toxic"];
-
-            // $response["xrd_lab"]["texture"] = $xrd_lab["texture"];
-
-            // $response["xrd_lab"]["residual_stress"] = $xrd_lab["residual_stress"];
-
-            // $response["xrd_lab"]["saxs"] = $xrd_lab["saxs"];
-
-            // $response["xrd_lab"]["other_requirements"] = $xrd_lab["other_requirements"];
-
-            // // $response["xrd_lab"]["date"] = $xrd_lab["date"];
-
-            // $response["xrd_lab"]["slot_start"] = $xrd_lab["slot_start"];
-
-            // $response["xrd_lab"]["slot_end"] = $xrd_lab["slot_end"];
-
-
-
+            
          //   echo json_encode($responses);
 
         } else {
@@ -169,15 +140,7 @@ if (isset($_POST['material']) &&
 
             $response["xrd_lab"]["other_requirements"] = $xrd_lab["other_requirements"];
 
-            // $response["xrd_lab"]["date"] = $xrd_lab["date"];
-
-            // $response["xrd_lab"]["slot_start"] = $xrd_lab["slot_start"];
-
-            // $response["xrd_lab"]["slot_end"] = $xrd_lab["slot_end"];
-
-
-
-         //   echo json_encode($response);
+             
 
         } else {
 

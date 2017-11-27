@@ -1,5 +1,7 @@
 <?php
-
+/*
+This file is for booking the spm lab booking  
+*/
 header("Access-Control-Allow-Origin: *");
 
 require_once 'include/DB_Functions.php';
@@ -74,25 +76,14 @@ $lab_number=2;
 
         if ($lab_booking) {
 
-            // user stored successfully
-
-            // $responses["booking_success"] = TRUE;
-
-            // // // $response["xrd_id"] = $xrd_lab["xrd_id"];
-
-            // $responses["booking"]["booking_id"] = $lab_booking["booking_id"];
-
-            // $responses["booking"]["status"] = $lab_booking["status"];
-
+            // booked stored successfully
+ 
             $booking_id = $lab_booking["booking_id"];
-
-            
-
-            // echo json_encode($responses);
+ // echo json_encode($responses);
 
         } else {
 
-            // user failed to store
+            // booking failed to store
 
             $response["booking_success"] = FALSE;
 
@@ -129,13 +120,6 @@ $lab_number=2;
             $response["spm_lab"]["toxic"] = $spm_lab["toxic"];
 
             $response["spm_lab"]["conducting"] = $spm_lab["conducting"];
-
-            // $response["spm_lab"]["date"] = $spm_lab["date"];
-
-            // $response["spm_lab"]["slot_start"] = $spm_lab["slot_start"];
-
-            // $response["spm_lab"]["slot_end"] = $spm_lab["slot_end"];
-
             $response["spm_lab"]["other_requirements"] = $spm_lab["other_requirements"];
 
           //  echo json_encode($response);
@@ -147,9 +131,6 @@ $lab_number=2;
             $response["success"] = FALSE;
 
             $response["error_msg"] = "Unknown error occurred while booking!";
-
-          //  
-
         }
 
 	
@@ -159,9 +140,6 @@ $lab_number=2;
     $response["success"] = FALSE;
 
     $response["error_msg"] = "Required parameters (  material, prep_method, material_type, toxic, conducting,start time, end time or date) is missing!";
-
-   // echo json_encode($response);
-
 }
 echo json_encode($response);
 ?>

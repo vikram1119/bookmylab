@@ -1,4 +1,5 @@
 <?php
+/*This file is for managing the manager Task*/
 header("Access-Control-Allow-Origin: *");
 
 require_once 'include/DB_Functions.php';

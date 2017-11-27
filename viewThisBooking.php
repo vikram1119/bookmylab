@@ -1,11 +1,15 @@
 <?php
+/*
+This file is for Viewing the particular booking by a booking_id
 
+*/
 header("Access-Control-Allow-Origin: *");
 
 require_once 'include/DB_Functions.php';
 
 $db = new DB_Functions();
-
+/*
+*/
 
 
 // json response array
@@ -67,7 +71,7 @@ if ( isset($_POST['booking_id']) ) {
             echo json_encode($response);
                 // $response["booking_id"]=$all_my_bookings["booking_id"];
         }else{
-            echo "Error..!!!";
+            //echo "Error..!!!";
               $response["success"]=false;
 
         }

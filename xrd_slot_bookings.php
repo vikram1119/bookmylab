@@ -1,4 +1,7 @@
 <?php
+/*
+This file is for booking slots for XRD lab
+*/
 header("Access-Control-Allow-Origin: *");
 
 require_once 'include/DB_Functions.php';
